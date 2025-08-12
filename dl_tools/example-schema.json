@@ -1,0 +1,41 @@
+{
+  "schemas": [
+    {
+      "name": "ai_model",
+      "description": "Information about an AI model",  
+      "fields": {
+        "organization": {
+          "type": "string",
+          "description": "Organization that created the model"  
+        },
+        "use_cases": {
+          "type": "array",
+          "description": "List of primary use cases for this model"  
+        },
+        "practices": {  
+          "type": "array",
+          "description": "Recommended practices for using this model"
+        },
+        "severity": {
+          "type": "string",
+          "description": "Risk severity level",
+          "enum": ["low", "medium", "high"]
+        },
+        "data_info": {  
+          "type": "array",
+          "description": "Information about training data"
+        },
+        "concerning_practices": {  
+          "type": "array",
+          "description": "Potentially concerning practices"
+        },
+        "concerning_practices_urls": {  
+          "type": "array",
+          "description": "References for concerning practices"
+        }
+      },
+      "required": ["organization", "use_cases"],  
+      "category_field": "type"  
+    }
+  ]
+}

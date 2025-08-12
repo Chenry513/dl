@@ -1,0 +1,28 @@
+name: Sync Markdown to Database
+
+on:
+  push:
+    paths:
+      - 'dl_tools_full/dl_tools/markdown_files/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r dl_tools/requirements.txt
+          
+      - name: Run markdown processor
+        env:
+          DJANGO_SETTINGS_MODULE: dl_tools.dl_tools.settings  
+        working-directory: dl_tools_full/dl_tools  
+        run: |
+          python manage.py process_markdown
