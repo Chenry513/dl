@@ -69,14 +69,31 @@ This project started as a collaboration with Nicholas Vincent from SFU, who envi
 - Provide transparency about how AI models use personal data
 - Empower users to make informed decisions about which models to use
 
-The things I handled the technical side, building out:
-The Automated Content Pipeline
-Instead of manually updating a database every time someone adds a model, I built a system that does it automatically. Contributors just add a Markdown file to GitHub, and the pipeline validates it, converts it to the right format, and updates the live site—all within a minute. This cut down manual admin work by about 60%.
-The Backend Infrastructure
-I designed the Django backend to handle structured model data, user preferences, and API requests. This includes the database schema, 8+ API endpoints, and all the logic that connects the frontend to the data.
-Deployment & CI/CD
-The whole thing runs on Render.com with automated deployments. Pushing code changes triggers a rebuild, but pushing markdown changes only triggers the content pipeline—no full redeploy needed.
-The coolest part is that the Markdown processing system is reusable. Any Django project that needs user-contributed content could use this same pattern without forcing contributors to understand databases or backend code.
+### What I Built
+
+**The Automated Content Pipeline**
+
+Instead of manually updating a database every time someone adds a model, I built a system that does it automatically. Contributors just add a Markdown file to GitHub, and the pipeline:
+- Validates the file format
+- Converts it to Django models
+- Updates the live site within a minute
+
+This cut down manual admin work by about 60%.
+
+**The Backend Infrastructure**
+
+I designed the Django backend to handle structured model data, user preferences, and API requests. This includes:
+- Database schema for model metadata
+- 8+ RESTful API endpoints
+- Logic connecting the frontend to the data
+
+**Deployment & CI/CD**
+
+The whole thing runs on Render.com with automated deployments:
+- Pushing code changes → full rebuild
+- Pushing markdown changes → content pipeline only (no redeploy)
+
+The coolest part? The Markdown processing system is reusable. Any Django project that needs user-contributed content could use this same pattern without forcing contributors to understand databases or backend code.
 
 ## Local Development
 
@@ -132,6 +149,8 @@ The site is deployed on Render.com's free tier, which means:
 - First load after sleeping takes 30-60 seconds
 - Fast and responsive once awake
 
+Perfect for a portfolio project with occasional traffic!
+
 ## Future Improvements
 
 - User accounts and saved preferences
@@ -145,6 +164,8 @@ The site is deployed on Render.com's free tier, which means:
 This project is open source and available under the MIT License.
 
 ---
+
+
 
 
    
