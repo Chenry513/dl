@@ -1,16 +1,14 @@
 import axios from 'axios';
-import Cookies from 'js-cookie'; // Import the js-cookie library
-
+import Cookies from 'js-cookie';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/',
-  withCredentials: true, // Ensure cookies are sent with requests
+  baseURL: import.meta.env.PROD ? 'https://dl-tools.onrender.com' : 'http://localhost:8000/',
+  withCredentials: true,
 });
 
 api.defaults.xsrfHeaderName = "X-CSRFToken";
 api.defaults.xsrfCookieName = "csrftoken";
 
-// Fetch CSRF token
 const fetchCSRFToken = async () => {
   try {
     await api.get('/set-csrf/');
@@ -20,10 +18,8 @@ const fetchCSRFToken = async () => {
   }
 };
 
-// Fetch CSRF token when the module is loaded
 fetchCSRFToken();
 
-// Add a request interceptor to include CSRF token in headers
 api.interceptors.request.use((config) => {
   const csrfToken = Cookies.get('csrftoken');
   if (csrfToken) {
