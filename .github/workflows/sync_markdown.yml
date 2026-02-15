@@ -9,29 +9,24 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v4
         
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: '3.11'
       
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
       
-      - name: Run migrations
-        env:
-          DJANGO_SETTINGS_MODULE: dl_tools.settings
-        run: |
-          cd dl_tools  
-          python manage.py migrate
-   
       - name: Run markdown processor
         env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DJANGO_SETTINGS_MODULE: dl_tools.settings
         run: |
-          cd dl_tools 
+          cd dl_tools
           python manage.py process_markdown
       
