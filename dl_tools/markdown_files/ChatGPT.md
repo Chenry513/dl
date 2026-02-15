@@ -1,7 +1,7 @@
 ---
 organization: OpenAI
 use_cases:
-  - Used widely for general-purpose questions, tutoring, and summarizes content.
+  - Used for general-purpose questions, tutoring, and summarizes content.
   - Integrated into workflows for coding assistance (Codex) and software automation.
   - Used in classrooms, personal projects, and creative writing tools.
 practices:
