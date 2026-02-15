@@ -10,7 +10,7 @@ services:
     runtime: python
     plan: free
     buildCommand: "./build.sh"
-    startCommand: "cd dl_tools && gunicorn dl_tools.wsgi:application"
+    startCommand: "gunicorn --chdir dl_tools dl_tools.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
