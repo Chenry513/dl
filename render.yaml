@@ -10,7 +10,7 @@ services:
     runtime: python
     plan: free
     buildCommand: "./build.sh"
-    startCommand: "gunicorn --bind 0.0.0.0:$PORT --chdir dl_tools dl_tools.wsgi:application"
+    startCommand: "gunicorn dl_tools.dl_tools.wsgi:application --bind 0.0.0.0:$PORT"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
