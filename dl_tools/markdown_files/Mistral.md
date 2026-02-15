@@ -18,7 +18,7 @@ concerning_practices:
 concerning_practices_urls:
   - https://github.com/mistralai/mistral-inference
   - https://www.techinasia.com/news/mistral-named-privacyfriendly-ai-google-ranks-report
-severity: medium
+severity: low
 ---
 
 # Mistral Details
